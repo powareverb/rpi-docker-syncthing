@@ -1,5 +1,6 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER Gavin Jones <gavin.jones.nz@gmail.com>
+#docker run -t -i resin/rpi-raspbian:jessie /bin/bash
 
 RUN apt-get update
 RUN apt-get upgrade -y
@@ -11,3 +12,9 @@ RUN echo "deb http://apt.syncthing.net/ syncthing release" | sudo tee -a /etc/ap
 
 RUN apt-get update
 RUN apt-get install syncthing -y
+
+#Default ports, these can be changed via config...
+EXPOSE 8384
+EXPOSE 22000
+
+CMD ["/usr/bin/syncthing"]
